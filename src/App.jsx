@@ -179,7 +179,6 @@ const travels = [
     place: '兴义',
     date: '贵州',
     image: '/media/travel-cities/xingyi.jpg',
-    layout: 'wide',
   },
   {
     place: '东山岛',
@@ -191,7 +190,6 @@ const travels = [
     place: '土楼',
     date: '福建',
     image: '/media/travel-cities/tulou.jpg',
-    layout: 'wide',
   },
   {
     place: '厦门',
@@ -212,7 +210,6 @@ const travels = [
     place: '西递',
     date: '安徽',
     image: '/media/travel-cities/xidi.jpg',
-    layout: 'wide',
   },
   {
     place: '哈尔滨',
@@ -223,7 +220,6 @@ const travels = [
     place: '天津',
     date: '天津',
     image: '/media/travel-cities/tianjin.jpg',
-    layout: 'wide',
   },
   {
     place: '大同',

@@ -1228,23 +1228,17 @@ section {
 }
 
 .travelGrid {
-  columns: 4 260px;
-  column-gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
 .travelGrid .moduleGlow {
-  display: inline-block;
-  width: 100%;
-  margin: 0 0 18px;
-  break-inside: avoid;
+  align-self: start;
 }
 
 .travelGrid .moduleGlow:has(.travelCardWide) {
-  column-span: all;
-  display: block;
-  max-width: min(100%, 980px);
-  margin: 0 auto 22px;
+  grid-column: span 2;
 }
 
 .travelCard {
@@ -1453,6 +1447,10 @@ section {
 
   .profileStats {
     grid-template-columns: 1fr;
+  }
+
+  .travelGrid .moduleGlow:has(.travelCardWide) {
+    grid-column: 1;
   }
 
   .heroDisplay {
