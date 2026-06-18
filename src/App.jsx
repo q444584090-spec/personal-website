@@ -109,6 +109,12 @@ const festivals = [
     image: '/media/festival-dezhou-2025.jpg',
   },
   {
+    year: '2025.07',
+    name: '潍坊新青年音乐节',
+    city: '潍坊',
+    image: '/media/festival-weifang-2025.jpg',
+  },
+  {
     year: '2025',
     name: '连岛音乐节',
     city: '连岛',

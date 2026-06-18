@@ -2,3 +2,5 @@ node_modules
 dist
 *.log
 *.ncm
+# Local raw festival photos; optimized copies are committed separately.
+public/media/202*.jpg
