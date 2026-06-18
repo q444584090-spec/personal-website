@@ -74,6 +74,30 @@ section {
   filter: saturate(0.94) contrast(1.06) brightness(0.72);
 }
 
+.heroSheepMark {
+  position: absolute;
+  left: 47.7%;
+  top: 66.2%;
+  z-index: -2;
+  width: clamp(30px, 3.25vw, 56px);
+  height: clamp(15px, 1.65vw, 28px);
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  background: rgba(218, 216, 203, 0.92);
+  color: rgba(31, 34, 37, 0.92);
+  font-size: clamp(9px, 0.94vw, 16px);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  transform: translate(-50%, -50%) rotate(1deg);
+  transform-origin: center;
+  pointer-events: none;
+  text-shadow: none;
+  box-shadow: 0 0 0 1px rgba(23, 25, 28, 0.08);
+  will-change: transform;
+}
+
 .heroSheepLoop {
   z-index: -3;
   overflow: hidden;
@@ -1061,6 +1085,10 @@ section {
   background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, 0.82));
 }
 
+.travelCard::after {
+  display: none;
+}
+
 .hobbyCard div,
 .travelCard div {
   position: absolute;
@@ -1270,6 +1298,14 @@ section {
 }
 
 .bandsIntro {
+  max-width: 720px;
+  margin: 18px 0 0;
+  color: #a9b3be;
+  font-size: 18px;
+  line-height: 1.85;
+}
+
+.dogsIntro {
   max-width: 720px;
   margin: 18px 0 0;
   color: #a9b3be;

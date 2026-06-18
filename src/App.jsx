@@ -58,22 +58,22 @@ const dogs = [
   {
     name: '九妹',
     tag: '中华田园犬',
-    image: '/media/hobby-dog.jpg',
+    image: '/media/九妹.jpg',
   },
   {
     name: '五月',
     tag: '中华田园犬',
-    image: '/media/hobby-dog.jpg',
+    image: '/media/五月.jpg',
   },
   {
     name: '九妹',
-    tag: '日常散步',
-    image: '/media/hobby-dog.jpg',
+    tag: '随地大小睡',
+    image: '/media/随地大小睡.jpg',
   },
   {
     name: '五月',
-    tag: '慵懒午后',
-    image: '/media/hobby-dog.jpg',
+    tag: '誓死守护食物',
+    image: '/media/誓死守护食物.jpg',
   },
 ]
 
@@ -521,7 +521,7 @@ function App() {
       root.classList.add('motionReady')
 
       gsap.set('.openingCurtain', { autoAlpha: 1, scaleY: 1, transformOrigin: 'top center' })
-      gsap.set('.heroVideo, .heroSheepLoop', { scale: 1.08 })
+      gsap.set('.heroVideo, .heroSheepLoop, .heroSheepMark', { scale: 1.08 })
       gsap.set('.navShell', { autoAlpha: 0, clipPath: 'inset(0% 0% 100% 0%)' })
       gsap.set('.heroEyebrow, .heroSubline, .heroPitch, .heroMotto', { y: 42, autoAlpha: 0 })
       gsap.set('.heroDisplayMain', {
@@ -543,7 +543,7 @@ function App() {
           duration: 1.35,
           ease: 'expo.inOut',
         })
-        .to('.heroVideo, .heroSheepLoop', {
+        .to('.heroVideo, .heroSheepLoop, .heroSheepMark', {
           scale: 1,
           duration: 2.2,
           ease: 'expo.out',
@@ -701,6 +701,7 @@ function App() {
             />
           </video>
         )}
+        <span className="heroSheepMark" aria-hidden="true">WYF</span>
         <div className="heroShade" />
 
         <header className={`navShell ${isNavFloating ? 'navFloating' : ''}`}>
@@ -784,14 +785,6 @@ function App() {
             <p>
               工地出来的工程师、主机游戏玩家、两只小狗的铲屎官、乐队现场常客、国内走过 100+ 座城市。
             </p>
-            <div className="contactRow">
-              {contacts.map(({ icon: Icon, label, value, href }) => (
-                <a href={href || '#contact'} key={label}>
-                  <Icon size={16} />
-                  <span>{value}</span>
-                </a>
-              ))}
-            </div>
             <div className="profileTimeline">
               <span className="profileTimelineLabel">Journey</span>
               <ol>
@@ -808,6 +801,14 @@ function App() {
                   </div>
                 </li>
               </ol>
+            </div>
+            <div className="contactRow">
+              {contacts.map(({ icon: Icon, label, value, href }) => (
+                <a href={href || '#contact'} key={label}>
+                  <Icon size={16} />
+                  <span>{value}</span>
+                </a>
+              ))}
             </div>
           </div>
           </ModuleGlow>
@@ -868,6 +869,9 @@ function App() {
             <PawPrint size={40} />
             宠物
           </h2>
+          <p className="dogsIntro">
+            九妹和五月都是流浪狗,五月是五月收养的,九妹是九月在街上捡的。
+          </p>
         </div>
         <div className="dogGrid">
           {dogs.map((dog, index) => (
