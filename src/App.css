@@ -1239,9 +1239,20 @@ section {
   break-inside: avoid;
 }
 
+.travelGrid .moduleGlow:has(.travelCardFeature) {
+  column-span: all;
+  display: block;
+  width: min(100%, 980px);
+  margin: 0 auto 22px;
+}
+
 .travelCard {
   width: 100%;
   isolation: isolate;
+}
+
+.travelCardFeature h3 {
+  font-size: 32px;
 }
 
 .moduleGlow .travelCard > img {

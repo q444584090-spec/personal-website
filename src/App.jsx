@@ -138,7 +138,7 @@ const travels = [
     place: '纳木错',
     date: '西藏',
     image: '/media/travel-cities/namtso.jpg',
-    layout: 'wide',
+    layout: 'feature',
   },
   {
     place: '珠穆朗玛峰',
@@ -265,7 +265,7 @@ const travels = [
     place: '乌兰布统',
     date: '内蒙古',
     image: '/media/travel-cities/ulan-butong.jpg',
-    layout: 'wide',
+    layout: 'feature',
   },
   {
     place: '桂林',
@@ -920,7 +920,7 @@ function App() {
         <div className="travelGrid">
           {travels.map((travel) => (
             <ModuleGlow key={travel.place}>
-            <article className={`travelCard ${travel.layout === 'wide' ? 'travelCardWide' : ''}`}>
+            <article className={`travelCard ${travel.layout === 'feature' ? 'travelCardFeature' : ''}`}>
               <img src={travel.image} alt={`${travel.place}旅行照片`} loading="lazy" decoding="async" />
               <div>
                 <MapPin size={18} />
