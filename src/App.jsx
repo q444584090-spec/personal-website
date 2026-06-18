@@ -626,10 +626,9 @@ function App() {
 
           <ModuleGlow>
           <div className="profileBioCard">
-            <h2>把人的经验、直觉和热爱，整理成 AI 可读的训练信号。</h2>
+            <h2>关于我，把几件事摊开放在这里。</h2>
             <p>
-              从建环工程到出去看了看世界，我把现场的秩序感和对新技术的好奇，
-              转向对内容质量与表达标准的判断。
+              工地出来的工程师、主机游戏玩家、两只小狗的铲屎官、乐队现场常客、国内走过 100+ 座城——按模块分类，看哪块感兴趣就往下翻。
             </p>
             <div className="contactRow">
               {contacts.map(({ icon: Icon, label, value, href }) => (
