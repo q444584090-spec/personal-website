@@ -646,7 +646,7 @@ function App() {
           <ModuleGlow>
           <div className="profileStat">
             <strong>5+</strong>
-            <span>年工地一线经验</span>
+            <span>年工地一线</span>
           </div>
           </ModuleGlow>
           <ModuleGlow>
