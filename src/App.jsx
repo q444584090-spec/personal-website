@@ -628,7 +628,7 @@ function App() {
           <div className="profileBioCard">
             <h2>关于我，把几件事摊开放在这里。</h2>
             <p>
-              工地出来的工程师、主机游戏玩家、两只小狗的铲屎官、乐队现场常客、国内走过 100+ 座城——按模块分类，看哪块感兴趣就往下翻。
+              工地出来的工程师、主机游戏玩家、两只小狗的铲屎官、乐队现场常客、国内走过 100+ 座城市。
             </p>
             <div className="contactRow">
               {contacts.map(({ icon: Icon, label, value, href }) => (
