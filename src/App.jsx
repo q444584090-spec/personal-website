@@ -300,7 +300,7 @@ function BackgroundMusic() {
         onClick={togglePlay}
         aria-label={isPlaying ? '暂停背景音乐' : '播放背景音乐'}
       >
-        <span className="musicTriggerLabel">Music</span>
+        <span className="musicTriggerLabel">音乐</span>
         <span className="musicWave" aria-hidden="true">
           <i />
           <i />
