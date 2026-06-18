@@ -658,7 +658,7 @@ function App() {
           <ModuleGlow>
           <div className="profileStat">
             <strong>132</strong>
-            <span>座城市</span>
+            <span>座城市足迹</span>
           </div>
           </ModuleGlow>
         </div>
