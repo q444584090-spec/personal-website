@@ -521,7 +521,7 @@ function App() {
       root.classList.add('motionReady')
 
       gsap.set('.openingCurtain', { autoAlpha: 1, scaleY: 1, transformOrigin: 'top center' })
-      gsap.set('.heroVideo, .heroSheepLoop, .heroSheepMark', { scale: 1.08 })
+      gsap.set('.heroVideo, .heroSheepLoop', { scale: 1.08 })
       gsap.set('.navShell', { autoAlpha: 0, clipPath: 'inset(0% 0% 100% 0%)' })
       gsap.set('.heroEyebrow, .heroSubline, .heroPitch, .heroMotto', { y: 42, autoAlpha: 0 })
       gsap.set('.heroDisplayMain', {
@@ -543,7 +543,7 @@ function App() {
           duration: 1.35,
           ease: 'expo.inOut',
         })
-        .to('.heroVideo, .heroSheepLoop, .heroSheepMark', {
+        .to('.heroVideo, .heroSheepLoop', {
           scale: 1,
           duration: 2.2,
           ease: 'expo.out',
@@ -701,7 +701,6 @@ function App() {
             />
           </video>
         )}
-        <span className="heroSheepMark" aria-hidden="true">WYF</span>
         <div className="heroShade" />
 
         <header className={`navShell ${isNavFloating ? 'navFloating' : ''}`}>
