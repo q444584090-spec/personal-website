@@ -869,7 +869,7 @@ function App() {
             宠物
           </h2>
           <p className="dogsIntro">
-            九妹和五月都是流浪狗,五月是五月收养的,九妹是九月在街上捡的。
+            五月与九妹，都是从街头来到我生活里的小狗。一个在五月，一个在九月。
           </p>
         </div>
         <div className="dogGrid">
