@@ -138,26 +138,31 @@ const travels = [
     place: '纳木错',
     date: '西藏',
     image: '/media/travel-cities/namtso.jpg',
+    layout: 'wide',
   },
   {
     place: '珠穆朗玛峰',
     date: '日喀则',
     image: '/media/travel-cities/everest.jpg',
+    layout: 'wide',
   },
   {
     place: '赛里木湖',
     date: '新疆',
     image: '/media/travel-cities/sayram-lake.jpg',
+    layout: 'wide',
   },
   {
     place: '喀拉峻',
     date: '新疆',
     image: '/media/travel-cities/kalajun.jpg',
+    layout: 'wide',
   },
   {
     place: '塔若错',
     date: '西藏',
     image: '/media/travel-cities/taruo-lake.jpg',
+    layout: 'wide',
   },
   {
     place: '夏塔',
@@ -168,21 +173,25 @@ const travels = [
     place: '茂兰',
     date: '贵州',
     image: '/media/travel-cities/maolan.jpg',
+    layout: 'wide',
   },
   {
     place: '兴义',
     date: '贵州',
     image: '/media/travel-cities/xingyi.jpg',
+    layout: 'wide',
   },
   {
     place: '东山岛',
     date: '福建',
     image: '/media/travel-cities/dongshan-island.jpg',
+    layout: 'wide',
   },
   {
     place: '土楼',
     date: '福建',
     image: '/media/travel-cities/tulou.jpg',
+    layout: 'wide',
   },
   {
     place: '厦门',
@@ -203,6 +212,7 @@ const travels = [
     place: '西递',
     date: '安徽',
     image: '/media/travel-cities/xidi.jpg',
+    layout: 'wide',
   },
   {
     place: '哈尔滨',
@@ -213,6 +223,7 @@ const travels = [
     place: '天津',
     date: '天津',
     image: '/media/travel-cities/tianjin.jpg',
+    layout: 'wide',
   },
   {
     place: '大同',
@@ -223,6 +234,7 @@ const travels = [
     place: '乌兰布统',
     date: '内蒙古',
     image: '/media/travel-cities/ulan-butong.jpg',
+    layout: 'wide',
   },
   {
     place: '桂林',
@@ -238,6 +250,7 @@ const travels = [
     place: '抚仙湖',
     date: '云南',
     image: '/media/travel-cities/fuxian-lake.jpg',
+    layout: 'wide',
   },
   {
     place: '洛阳',
@@ -871,7 +884,7 @@ function App() {
         <div className="travelGrid">
           {travels.map((travel) => (
             <ModuleGlow key={travel.place}>
-            <article className="travelCard">
+            <article className={`travelCard ${travel.layout === 'wide' ? 'travelCardWide' : ''}`}>
               <img src={travel.image} alt={`${travel.place}旅行照片`} loading="lazy" decoding="async" />
               <div>
                 <MapPin size={18} />
