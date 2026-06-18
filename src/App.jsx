@@ -300,6 +300,41 @@ const travels = [
   },
 ]
 
+const travelAspectRatios = {
+  'bangong-lake.jpg': 0.75,
+  'chongqing.jpg': 1.7773,
+  'dali.jpg': 1.7778,
+  'datong.jpg': 1.7773,
+  'dongshan-island.jpg': 1.5,
+  'everest.jpg': 1.503,
+  'fuxian-lake.jpg': 1.7822,
+  'guilin.jpg': 0.5613,
+  'hangzhou.jpg': 0.75,
+  'harbin.jpg': 0.75,
+  'kalajun.jpg': 1.7773,
+  'kunming.jpg': 0.5613,
+  'linfen.jpg': 0.5627,
+  'luoyang.jpg': 0.6667,
+  'maolan.jpg': 1.7778,
+  'namtso.jpg': 1.5015,
+  'nanjing.jpg': 1.3333,
+  'potala-palace.jpg': 0.75,
+  'qiandongnan.jpg': 0.5613,
+  'quanzhou.jpg': 0.75,
+  'sayram-lake.jpg': 1.7815,
+  'shaoxing.jpg': 0.6667,
+  'taklamakan.jpg': 1.7778,
+  'taruo-lake.jpg': 1.7773,
+  'tianjin.jpg': 1.3333,
+  'tulou.jpg': 1.5416,
+  'ulan-butong.jpg': 1.7773,
+  'xiamen.jpg': 0.75,
+  'xiata.jpg': 0.5613,
+  'xidi.jpg': 1.5,
+  'xingyi.jpg': 1.7778,
+  'yangzhou.jpg': 1.3333,
+}
+
 const sheepHeroFrames = [
   '/media/sheep-morning.png',
   '/media/sheep-noon.png',
@@ -322,7 +357,7 @@ const musicTracks = [
   },
 ]
 
-function ModuleGlow({ children, className = '', animated = false }) {
+function ModuleGlow({ children, className = '', animated = false, style }) {
   return (
     <BorderGlow
       className={`moduleGlow ${className}`}
@@ -336,9 +371,117 @@ function ModuleGlow({ children, className = '', animated = false }) {
       animated={animated}
       fillOpacity={0.42}
       colors={['#c084fc', '#f472b6', '#38bdf8']}
+      style={style}
     >
       {children}
     </BorderGlow>
+  )
+}
+
+function getTravelColumnCount(width) {
+  if (width < 620) return 1
+  if (width < 920) return 2
+  if (width < 1280) return 3
+  return 4
+}
+
+function getTravelAspect(image) {
+  const fileName = image.split('/').pop()
+  return travelAspectRatios[fileName] || 1
+}
+
+function buildTravelLayout(items, containerWidth) {
+  if (!containerWidth) return { cards: [], height: 0 }
+
+  const gap = containerWidth < 760 ? 14 : 18
+  const columns = getTravelColumnCount(containerWidth)
+  const columnWidth = (containerWidth - gap * (columns - 1)) / columns
+  const columnHeights = Array.from({ length: columns }, () => 0)
+
+  const cards = items.map((travel) => {
+    const columnSpan = travel.layout === 'feature' && columns > 1 ? Math.min(2, columns) : 1
+    const cardWidth = columnWidth * columnSpan + gap * (columnSpan - 1)
+    const aspect = getTravelAspect(travel.image)
+    const cardHeight = cardWidth / aspect
+
+    let bestColumn = 0
+    let bestY = Infinity
+
+    for (let column = 0; column <= columns - columnSpan; column += 1) {
+      const occupiedHeight = Math.max(...columnHeights.slice(column, column + columnSpan))
+      if (occupiedHeight < bestY) {
+        bestY = occupiedHeight
+        bestColumn = column
+      }
+    }
+
+    const x = bestColumn * (columnWidth + gap)
+    const y = bestY
+    const nextHeight = y + cardHeight + gap
+
+    for (let column = bestColumn; column < bestColumn + columnSpan; column += 1) {
+      columnHeights[column] = nextHeight
+    }
+
+    return {
+      travel,
+      style: {
+        left: `${x}px`,
+        top: `${y}px`,
+        width: `${cardWidth}px`,
+        height: `${cardHeight}px`,
+      },
+    }
+  })
+
+  return {
+    cards,
+    height: Math.max(...columnHeights) - gap,
+  }
+}
+
+function TravelMasonry({ items }) {
+  const containerRef = useRef(null)
+  const [layout, setLayout] = useState({ cards: [], height: 0 })
+
+  useLayoutEffect(() => {
+    const container = containerRef.current
+    if (!container) return undefined
+
+    const updateLayout = () => {
+      setLayout(buildTravelLayout(items, container.clientWidth))
+    }
+
+    updateLayout()
+    const observer = new ResizeObserver(updateLayout)
+    observer.observe(container)
+
+    return () => observer.disconnect()
+  }, [items])
+
+  return (
+    <div
+      className="travelGrid"
+      ref={containerRef}
+      style={{ height: layout.height ? `${layout.height}px` : undefined }}
+    >
+      {layout.cards.map(({ travel, style }) => (
+        <ModuleGlow
+          className={`travelMasonryItem ${travel.layout === 'feature' ? 'travelMasonryItemFeature' : ''}`}
+          key={travel.place}
+          style={style}
+        >
+          <article className={`travelCard ${travel.layout === 'feature' ? 'travelCardFeature' : ''}`}>
+            <img src={travel.image} alt={`${travel.place}旅行照片`} loading="lazy" decoding="async" />
+            <div>
+              <MapPin size={18} />
+              <h3>{travel.place}</h3>
+              <p>{travel.date}</p>
+            </div>
+          </article>
+        </ModuleGlow>
+      ))}
+    </div>
   )
 }
 
@@ -917,20 +1060,7 @@ function App() {
             旅行日记
           </h2>
         </div>
-        <div className="travelGrid">
-          {travels.map((travel) => (
-            <ModuleGlow key={travel.place}>
-            <article className={`travelCard ${travel.layout === 'feature' ? 'travelCardFeature' : ''}`}>
-              <img src={travel.image} alt={`${travel.place}旅行照片`} loading="lazy" decoding="async" />
-              <div>
-                <MapPin size={18} />
-                <h3>{travel.place}</h3>
-                <p>{travel.date}</p>
-              </div>
-            </article>
-            </ModuleGlow>
-          ))}
-        </div>
+        <TravelMasonry items={travels} />
       </section>
 
       <section className="contactEnd" id="contact">

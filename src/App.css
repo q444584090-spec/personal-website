@@ -1228,25 +1228,16 @@ section {
 }
 
 .travelGrid {
-  columns: 3 340px;
-  column-gap: 18px;
-}
-
-.travelGrid .moduleGlow {
-  display: inline-block;
+  position: relative;
   width: 100%;
-  margin: 0 0 18px;
-  break-inside: avoid;
 }
 
-.travelGrid .moduleGlow:has(.travelCardFeature) {
-  column-span: all;
-  display: block;
-  width: min(100%, 980px);
-  margin: 0 auto 22px;
+.travelMasonryItem {
+  position: absolute;
 }
 
 .travelCard {
+  height: 100%;
   width: 100%;
   isolation: isolate;
 }
