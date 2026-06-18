@@ -153,6 +153,11 @@ const travels = [
     layout: 'wide',
   },
   {
+    place: '塔克拉玛干',
+    date: '新疆',
+    image: '/media/travel-cities/taklamakan.jpg',
+  },
+  {
     place: '喀拉峻',
     date: '新疆',
     image: '/media/travel-cities/kalajun.jpg',
@@ -163,6 +168,11 @@ const travels = [
     date: '西藏',
     image: '/media/travel-cities/taruo-lake.jpg',
     layout: 'wide',
+  },
+  {
+    place: '班公湖',
+    date: '西藏',
+    image: '/media/travel-cities/bangong-lake.jpg',
   },
   {
     place: '夏塔',
@@ -181,6 +191,11 @@ const travels = [
     image: '/media/travel-cities/xingyi.jpg',
   },
   {
+    place: '黔东南',
+    date: '贵州',
+    image: '/media/travel-cities/qiandongnan.jpg',
+  },
+  {
     place: '东山岛',
     date: '福建',
     image: '/media/travel-cities/dongshan-island.jpg',
@@ -195,6 +210,21 @@ const travels = [
     place: '厦门',
     date: '福建',
     image: '/media/travel-cities/xiamen.jpg',
+  },
+  {
+    place: '泉州',
+    date: '福建',
+    image: '/media/travel-cities/quanzhou.jpg',
+  },
+  {
+    place: '南京',
+    date: '江苏',
+    image: '/media/travel-cities/nanjing.jpg',
+  },
+  {
+    place: '扬州',
+    date: '江苏',
+    image: '/media/travel-cities/yangzhou.jpg',
   },
   {
     place: '绍兴',
@@ -222,6 +252,11 @@ const travels = [
     image: '/media/travel-cities/tianjin.jpg',
   },
   {
+    place: '重庆',
+    date: '重庆',
+    image: '/media/travel-cities/chongqing.jpg',
+  },
+  {
     place: '大同',
     date: '山西',
     image: '/media/travel-cities/datong.jpg',
@@ -241,6 +276,11 @@ const travels = [
     place: '昆明',
     date: '云南',
     image: '/media/travel-cities/kunming.jpg',
+  },
+  {
+    place: '大理',
+    date: '云南',
+    image: '/media/travel-cities/dali.jpg',
   },
   {
     place: '抚仙湖',
