@@ -30,32 +30,24 @@ const contacts = [
 
 const hobbies = [
   {
-    title: '游戏',
-    tag: 'Elden Ring / 黑神话悟空 / 漫漫长夜',
-    icon: Gamepad2,
-    image:
-      '/media/hobby-game.jpg',
+    title: '艾尔登法环',
+    tag: 'Elden Ring',
+    image: '/media/games/elden-ring.jpg',
   },
   {
-    title: '音乐',
-    tag: '声音玩具 / 李志 / 赵雷 / 刺猬',
-    icon: Music,
-    image:
-      '/media/hobby-music.jpg',
+    title: '黑神话：悟空',
+    tag: 'Black Myth: Wukong',
+    image: '/media/games/black-myth-wukong.jpg',
   },
   {
-    title: '旅行',
-    tag: '在路上观察世界，也观察自己',
-    icon: Camera,
-    image:
-      '/media/hobby-travel.jpg',
+    title: '赛博朋克 2077',
+    tag: 'Cyberpunk 2077',
+    image: '/media/games/cyberpunk-2077.jpg',
   },
   {
-    title: '宠物',
-    tag: '九妹和五月，都是流浪狗',
-    icon: PawPrint,
-    image:
-      '/media/hobby-dog.jpg',
+    title: '荒野大镖客 2',
+    tag: 'Red Dead Redemption 2',
+    image: '/media/games/red-dead-redemption-2.jpg',
   },
 ]
 
@@ -83,12 +75,12 @@ const dogs = [
 ]
 
 const bands = [
-  { name: '声音玩具', logo: '/media/band-shengyinwanju.png' },
-  { name: '李志', logo: '/media/band-lizhi.png' },
-  { name: '赵雷', logo: '/media/band-zhaolei.png' },
-  { name: '刺猬', logo: '/media/band-ciwei.png' },
-  { name: '宋冬野', logo: '/media/band-songdongye.png' },
-  { name: '回春丹', logo: '/media/band-huichundan.png' },
+  { name: '声音玩具', logo: '/media/bands/band-shengyinwanju.jpg' },
+  { name: '李志', logo: '/media/bands/band-lizhi.jpg' },
+  { name: '赵雷', logo: '/media/bands/band-zhaolei-clean.jpg' },
+  { name: '刺猬', logo: '/media/bands/band-ciwei.jpg' },
+  { name: '宋冬野', logo: '/media/bands/band-songdongye-clean.jpg' },
+  { name: '回春丹', logo: '/media/bands/band-huichundan-hcd-v2.png' },
 ]
 
 const festivals = [
@@ -626,7 +618,7 @@ function App() {
 
           <ModuleGlow>
           <div className="profileBioCard">
-            <h2>关于我，把几件事摊开放在这里。</h2>
+            <h2>关于我</h2>
             <p>
               工地出来的工程师、主机游戏玩家、两只小狗的铲屎官、乐队现场常客、国内走过 100+ 座城市。
             </p>
@@ -666,15 +658,17 @@ function App() {
       <section className="sectionFrame" id="games">
         <div className="sectionHeading">
           <span>Games</span>
-          <h2>游戏</h2>
+          <h2 className="sectionTitleIconed">
+            <Gamepad2 size={40} />
+            游戏
+          </h2>
         </div>
         <div className="hobbyGrid">
-          {hobbies.map(({ icon: Icon, ...hobby }) => (
+          {hobbies.map((hobby) => (
             <ModuleGlow key={hobby.title}>
             <article className="hobbyCard">
               <img src={hobby.image} alt={hobby.title} />
               <div>
-                <Icon size={24} />
                 <span>{hobby.tag}</span>
                 <h3>{hobby.title}</h3>
               </div>
@@ -687,7 +681,10 @@ function App() {
       <section className="sectionFrame" id="dogs">
         <div className="sectionHeading">
           <span>Pets</span>
-          <h2>宠物</h2>
+          <h2 className="sectionTitleIconed">
+            <PawPrint size={40} />
+            宠物
+          </h2>
         </div>
         <div className="dogGrid">
           {dogs.map((dog, index) => (
@@ -708,7 +705,10 @@ function App() {
       <section className="bandsSection sectionFrame" id="bands">
         <div className="sectionHeading">
           <span>Favorite Bands</span>
-          <h2>喜欢的乐队</h2>
+          <h2 className="sectionTitleIconed">
+            <Music size={40} />
+            喜欢的乐队
+          </h2>
           <p className="bandsIntro">
             音乐节像一种阶段性标记：每去一次，就给生活多留下一段可以回放的现场。
             下面这些乐队和歌手，是我反复想回现场的理由。
@@ -719,7 +719,7 @@ function App() {
           {bands.map((band) => (
             <ModuleGlow key={band.name}>
             <article className="bandCard">
-              <div className="bandLogo">
+              <div className="bandImage">
                 <img src={band.logo} alt={`${band.name} 乐队图标`} />
               </div>
               <h3>{band.name}</h3>
@@ -760,7 +760,10 @@ function App() {
       <section className="sectionFrame travelSection" id="travel">
         <div className="sectionHeading">
           <span>Travel Notes</span>
-          <h2>旅行日记</h2>
+          <h2 className="sectionTitleIconed">
+            <Camera size={40} />
+            旅行日记
+          </h2>
         </div>
         <div className="travelGrid">
           {travels.map((travel) => (

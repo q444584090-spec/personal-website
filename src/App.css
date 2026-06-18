@@ -676,6 +676,18 @@ section {
   font-weight: 560;
 }
 
+.sectionTitleIconed {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sectionTitleIconed svg {
+  color: #86d9ff;
+  flex-shrink: 0;
+  stroke-width: 1.8;
+}
+
 .profileGrid {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
@@ -946,11 +958,6 @@ section {
   z-index: 1;
 }
 
-.hobbyCard svg {
-  margin-bottom: 18px;
-  color: #86d9ff;
-}
-
 .hobbyCard span {
   display: block;
   color: #9de3ff;
@@ -1156,15 +1163,21 @@ section {
 }
 
 .bandCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  padding: 22px 14px;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.11);
   background: rgba(255, 255, 255, 0.045);
   transition: border-color 0.2s ease, transform 0.2s ease;
   will-change: transform, opacity, clip-path;
+}
+
+.bandCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 34%, rgba(0, 0, 0, 0.78) 100%);
+  pointer-events: none;
 }
 
 .bandCard:hover {
@@ -1172,18 +1185,12 @@ section {
   transform: translateY(-2px);
 }
 
-.bandLogo {
-  width: 96px;
-  height: 96px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  overflow: hidden;
+.bandImage {
+  position: absolute;
+  inset: 0;
 }
 
-.bandLogo img {
+.bandImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1191,12 +1198,19 @@ section {
 }
 
 .bandCard h3 {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
   margin: 0;
   color: #f5f7fb;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 650;
   letter-spacing: 0.04em;
-  text-align: center;
+  text-align: left;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75);
 }
 
 .festivalSubheading {
