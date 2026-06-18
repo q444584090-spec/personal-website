@@ -130,52 +130,124 @@ const festivals = [
 
 const travels = [
   {
-    place: '西藏',
-    date: '纳木错 / 布达拉宫 / 珠穆朗玛峰',
-    image:
-      '/media/travel-tibet.jpg',
+    place: '布达拉宫',
+    date: '拉萨',
+    image: '/media/travel-cities/potala-palace.jpg',
   },
   {
-    place: '新疆',
-    date: '赛里木湖 / 塔克拉玛干',
-    image:
-      '/media/travel-xinjiang.jpg',
+    place: '纳木错',
+    date: '西藏',
+    image: '/media/travel-cities/namtso.jpg',
   },
   {
-    place: '贵州',
-    date: '茂兰 / 兴义万峰林',
-    image:
-      '/media/travel-guizhou.jpg',
+    place: '珠穆朗玛峰',
+    date: '日喀则',
+    image: '/media/travel-cities/everest.jpg',
   },
   {
-    place: '福建',
-    date: '东山岛 / 土楼 / 厦门',
-    image:
-      '/media/travel-fujian.jpg',
+    place: '赛里木湖',
+    date: '新疆',
+    image: '/media/travel-cities/sayram-lake.jpg',
   },
   {
-    place: '江南',
-    date: '绍兴 / 西湖 / 安徽西递',
-    image:
-      '/media/travel-jiangnan.jpg',
+    place: '喀拉峻',
+    date: '新疆',
+    image: '/media/travel-cities/kalajun.jpg',
   },
   {
-    place: '北方',
-    date: '哈尔滨 / 天津 / 大同 / 乌兰布统',
-    image:
-      '/media/travel-north.jpg',
+    place: '塔若错',
+    date: '西藏',
+    image: '/media/travel-cities/taruo-lake.jpg',
   },
   {
-    place: '广西',
-    date: '桂林',
-    image:
-      '/media/travel-guangxi.jpg',
+    place: '夏塔',
+    date: '新疆',
+    image: '/media/travel-cities/xiata.jpg',
   },
   {
-    place: '云南',
-    date: '慢下来，继续走',
-    image:
-      '/media/travel-yunnan.jpg',
+    place: '茂兰',
+    date: '贵州',
+    image: '/media/travel-cities/maolan.jpg',
+  },
+  {
+    place: '兴义',
+    date: '贵州',
+    image: '/media/travel-cities/xingyi.jpg',
+  },
+  {
+    place: '东山岛',
+    date: '福建',
+    image: '/media/travel-cities/dongshan-island.jpg',
+  },
+  {
+    place: '土楼',
+    date: '福建',
+    image: '/media/travel-cities/tulou.jpg',
+  },
+  {
+    place: '厦门',
+    date: '福建',
+    image: '/media/travel-cities/xiamen.jpg',
+  },
+  {
+    place: '绍兴',
+    date: '浙江',
+    image: '/media/travel-cities/shaoxing.jpg',
+  },
+  {
+    place: '杭州',
+    date: '浙江',
+    image: '/media/travel-cities/hangzhou.jpg',
+  },
+  {
+    place: '西递',
+    date: '安徽',
+    image: '/media/travel-cities/xidi.jpg',
+  },
+  {
+    place: '哈尔滨',
+    date: '黑龙江',
+    image: '/media/travel-cities/harbin.jpg',
+  },
+  {
+    place: '天津',
+    date: '天津',
+    image: '/media/travel-cities/tianjin.jpg',
+  },
+  {
+    place: '大同',
+    date: '山西',
+    image: '/media/travel-cities/datong.jpg',
+  },
+  {
+    place: '乌兰布统',
+    date: '内蒙古',
+    image: '/media/travel-cities/ulan-butong.jpg',
+  },
+  {
+    place: '桂林',
+    date: '广西',
+    image: '/media/travel-cities/guilin.jpg',
+  },
+  {
+    place: '昆明',
+    date: '云南',
+    image: '/media/travel-cities/kunming.jpg',
+  },
+  {
+    place: '抚仙湖',
+    date: '云南',
+    image: '/media/travel-cities/fuxian-lake.jpg',
+  },
+  {
+    place: '洛阳',
+    date: '河南',
+    image: '/media/travel-cities/luoyang.jpg',
+  },
+  {
+    place: '临汾',
+    date: '山西',
+    image: '/media/travel-cities/linfen.jpg',
   },
 ]
 

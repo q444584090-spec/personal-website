@@ -1228,13 +1228,31 @@ section {
 }
 
 .travelGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  columns: 4 260px;
+  column-gap: 18px;
   gap: 18px;
 }
 
+.travelGrid .moduleGlow {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 18px;
+  break-inside: avoid;
+}
+
 .travelCard {
-  height: 480px;
+  width: 100%;
+  isolation: isolate;
+}
+
+.moduleGlow .travelCard > img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.travelCard::after {
+  background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.82));
 }
 
 .travelCard div {
@@ -1446,8 +1464,7 @@ section {
   }
 
   .portraitPanel,
-  .hobbyCard,
-  .travelCard {
+  .hobbyCard {
     height: 430px;
     min-height: auto;
   }

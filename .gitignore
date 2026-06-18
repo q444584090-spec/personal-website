@@ -26,5 +26,11 @@ dist-ssr
 
 .vercel
 
-# Local raw festival photos; optimized copies are committed separately.
-public/media/202*.jpg
+# Local raw top-level photos; optimized copies are committed separately.
+public/media/*.jpg
+!public/media/contact-bg.jpg
+!public/media/festival-*.jpg
+!public/media/hobby-*.jpg
+!public/media/portrait.jpg
+!public/media/sheep-morning-poster.jpg
+!public/media/travel-*.jpg
