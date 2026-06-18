@@ -75,12 +75,12 @@ const dogs = [
 ]
 
 const bands = [
-  { name: '声音玩具', logo: '/media/bands/band-shengyinwanju.jpg' },
-  { name: '李志', logo: '/media/bands/band-lizhi.jpg' },
-  { name: '赵雷', logo: '/media/bands/band-zhaolei-clean.jpg' },
-  { name: '刺猬', logo: '/media/bands/band-ciwei.jpg' },
-  { name: '宋冬野', logo: '/media/bands/band-songdongye-clean.jpg' },
-  { name: '回春丹', logo: '/media/bands/band-huichundan-hcd-v2.png' },
+  { name: '声音玩具', logo: '/media/bands/band-shengyinwanju-900.jpg' },
+  { name: '李志', logo: '/media/bands/band-lizhi-900.jpg' },
+  { name: '赵雷', logo: '/media/bands/band-zhaolei-900.jpg' },
+  { name: '刺猬', logo: '/media/bands/band-ciwei-900.jpg' },
+  { name: '宋冬野', logo: '/media/bands/band-songdongye-900.jpg' },
+  { name: '回春丹', logo: '/media/bands/band-huichundan-hcd-900.jpg' },
 ]
 
 const festivals = [
@@ -345,6 +345,31 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const preloadImages = () => {
+      const imagePaths = [
+        ...hobbies.map((hobby) => hobby.image),
+        ...dogs.map((dog) => dog.image),
+        ...bands.map((band) => band.logo),
+        ...travels.map((travel) => travel.image),
+      ]
+
+      imagePaths.forEach((src) => {
+        const image = new Image()
+        image.decoding = 'async'
+        image.src = src
+      })
+    }
+
+    if ('requestIdleCallback' in window) {
+      const preloadId = window.requestIdleCallback(preloadImages, { timeout: 1600 })
+      return () => window.cancelIdleCallback(preloadId)
+    }
+
+    const preloadId = window.setTimeout(preloadImages, 700)
+    return () => window.clearTimeout(preloadId)
+  }, [])
+
   useLayoutEffect(() => {
     const root = rootRef.current
     if (!root) return undefined
@@ -509,7 +534,7 @@ function App() {
             muted
             loop
             playsInline
-            poster="/media/sheep-morning.png"
+            poster="/media/sheep-morning-poster.jpg"
             onError={() => setHeroBackgroundMode('frames')}
           >
             <source src={sheepHeroVideo} type="video/webm" />
@@ -667,7 +692,7 @@ function App() {
           {hobbies.map((hobby) => (
             <ModuleGlow key={hobby.title}>
             <article className="hobbyCard">
-              <img src={hobby.image} alt={hobby.title} />
+              <img src={hobby.image} alt={hobby.title} decoding="async" />
               <div>
                 <span>{hobby.tag}</span>
                 <h3>{hobby.title}</h3>
@@ -690,7 +715,7 @@ function App() {
           {dogs.map((dog, index) => (
             <ModuleGlow key={`${dog.name}-${index}`}>
             <article className="dogCard">
-              <img src={dog.image} alt={dog.name} />
+              <img src={dog.image} alt={dog.name} decoding="async" />
               <div>
                 <PawPrint size={24} />
                 <span>{dog.tag}</span>
@@ -720,7 +745,7 @@ function App() {
             <ModuleGlow key={band.name}>
             <article className="bandCard">
               <div className="bandImage">
-                <img src={band.logo} alt={`${band.name} 乐队图标`} />
+                <img src={band.logo} alt={`${band.name} 乐队图标`} decoding="async" />
               </div>
               <h3>{band.name}</h3>
             </article>
@@ -738,7 +763,7 @@ function App() {
             <ModuleGlow key={`${festival.year}-${festival.name}`}>
             <article className="festivalCard">
               <div className="festivalImage">
-                <img src={festival.image} alt={`${festival.name} 现场照片`} />
+                <img src={festival.image} alt={`${festival.name} 现场照片`} loading="lazy" decoding="async" />
                 <div className="festivalYearBadge">
                   <CalendarDays size={16} />
                   {festival.year}
@@ -769,7 +794,7 @@ function App() {
           {travels.map((travel) => (
             <ModuleGlow key={travel.place}>
             <article className="travelCard">
-              <img src={travel.image} alt={`${travel.place}旅行照片`} />
+              <img src={travel.image} alt={`${travel.place}旅行照片`} loading="lazy" decoding="async" />
               <div>
                 <MapPin size={18} />
                 <h3>{travel.place}</h3>
