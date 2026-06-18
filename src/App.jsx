@@ -3,9 +3,12 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
   ArrowRight,
+  Award,
   CalendarDays,
   Camera,
+  Compass,
   Gamepad2,
+  HardHat,
   Mail,
   MapPin,
   MessageCircle,
@@ -761,13 +764,13 @@ function App() {
       <section className="profile sectionFrame" id="profile">
         <div className="sectionHeading">
           <span>Profile</span>
-          <h2>个人经历</h2>
+          <h2>个人简介</h2>
         </div>
         <div className="profileGrid">
           <ModuleGlow animated>
           <div className="profileIdCard">
             <div className="profileIdMark">
-              <Sparkles size={28} strokeWidth={1.4} />
+              <Sparkles size={36} strokeWidth={1.4} />
             </div>
             <h3>王祎凡</h3>
             <span className="profileIdTag">AI TRAINER · CONTENT JUDGE</span>
@@ -789,28 +792,49 @@ function App() {
                 </a>
               ))}
             </div>
+            <div className="profileTimeline">
+              <span className="profileTimelineLabel">Journey</span>
+              <ol>
+                <li>
+                  <span className="profileTimelineYear">2018 — 2023</span>
+                  <div className="profileTimelineBody">
+                    <strong>安装技术负责人</strong>
+                  </div>
+                </li>
+                <li>
+                  <span className="profileTimelineYear">2023 — 至今</span>
+                  <div className="profileTimelineBody">
+                    <strong>灵活就业闲散人员</strong>
+                  </div>
+                </li>
+              </ol>
+            </div>
           </div>
           </ModuleGlow>
-        </div>
-        <div className="profileStats">
-          <ModuleGlow>
-          <div className="profileStat">
-            <strong>5+</strong>
-            <span>年工地一线</span>
+
+          <div className="profileStats">
+            <ModuleGlow>
+            <div className="profileStat">
+              <HardHat size={22} strokeWidth={1.5} />
+              <strong>5年</strong>
+              <span>一线工地工程师</span>
+            </div>
+            </ModuleGlow>
+            <ModuleGlow>
+            <div className="profileStat">
+              <Award size={22} strokeWidth={1.5} />
+              <strong>2本</strong>
+              <span>一级建造师证书</span>
+            </div>
+            </ModuleGlow>
+            <ModuleGlow>
+            <div className="profileStat">
+              <Compass size={22} strokeWidth={1.5} />
+              <strong>100+</strong>
+              <span>城市足迹</span>
+            </div>
+            </ModuleGlow>
           </div>
-          </ModuleGlow>
-          <ModuleGlow>
-          <div className="profileStat">
-            <strong>2本</strong>
-            <span>一级建造师证书</span>
-          </div>
-          </ModuleGlow>
-          <ModuleGlow>
-          <div className="profileStat">
-            <strong>132</strong>
-            <span>座城市</span>
-          </div>
-          </ModuleGlow>
         </div>
       </section>
 

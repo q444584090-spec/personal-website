@@ -690,7 +690,7 @@ section {
 
 .profileGrid {
   display: grid;
-  grid-template-columns: 320px minmax(0, 1fr);
+  grid-template-columns: minmax(280px, 1fr) minmax(0, 2.2fr) minmax(260px, 1fr);
   gap: 20px;
   align-items: stretch;
 }
@@ -760,19 +760,19 @@ section {
 }
 
 .profileIdCard {
-  min-height: 238px;
-  padding: 30px 28px;
+  min-height: 520px;
+  padding: 40px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 18px;
   text-align: center;
 }
 
 .profileIdMark {
-  width: 76px;
-  height: 76px;
+  width: 104px;
+  height: 104px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -780,20 +780,20 @@ section {
   border-radius: 50%;
   color: #ff5a5a;
   background: rgba(255, 90, 90, 0.06);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .profileIdCard h3 {
   margin: 0;
   color: #f5f7fb;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 500;
   letter-spacing: 0.04em;
 }
 
 .profileIdTag {
   color: #86d9ff;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
 }
@@ -801,22 +801,22 @@ section {
 .profileIdCity {
   margin-top: 4px;
   color: #7f8b96;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.2em;
 }
 
 .profileBioCard {
-  min-height: 238px;
-  padding: 34px 42px;
+  min-height: 520px;
+  padding: 44px 48px;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 26px;
 }
 
 .profileBioCard h2 {
   margin: 0;
   color: #f5f7fb;
-  font-size: 28px;
+  font-size: 32px;
   line-height: 1.32;
   font-weight: 560;
   letter-spacing: -0.005em;
@@ -825,8 +825,8 @@ section {
 .profileBioCard > p {
   margin: 0;
   color: #a9b3be;
-  font-size: 15px;
-  line-height: 1.85;
+  font-size: 16px;
+  line-height: 1.95;
 }
 
 .contactRow {
@@ -856,24 +856,124 @@ section {
   flex-shrink: 0;
 }
 
+.profileTimeline {
+  margin-top: auto;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profileTimelineLabel {
+  color: #7f8b96;
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.profileTimeline ol {
+  list-style: none;
+  padding: 0 0 0 4px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.profileTimeline ol::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 90, 90, 0.55) 0%,
+    rgba(134, 217, 255, 0.22) 100%
+  );
+}
+
+.profileTimeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 18px;
+  align-items: start;
+  position: relative;
+  padding-left: 16px;
+}
+
+.profileTimeline li::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff5a5a;
+  box-shadow:
+    0 0 0 2px rgba(255, 90, 90, 0.16),
+    0 0 10px rgba(255, 90, 90, 0.5);
+}
+
+.profileTimelineYear {
+  color: #86d9ff;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  padding-top: 1px;
+  white-space: nowrap;
+}
+
+.profileTimelineBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.profileTimelineBody strong {
+  color: #f5f7fb;
+  font-size: 14.5px;
+  font-weight: 560;
+  letter-spacing: 0.01em;
+}
+
+.profileTimelineBody span {
+  color: #7f8b96;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
 .profileStats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 16px;
-  margin-top: 18px;
+  min-width: 0;
+  min-height: 520px;
 }
 
 .profileStat {
-  min-height: 96px;
-  padding: 22px 24px;
+  min-height: 0;
+  padding: 22px 26px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  justify-content: center;
+}
+
+.profileStat svg {
+  color: #86d9ff;
+  margin-bottom: 4px;
 }
 
 .profileStat strong {
   color: #f5f7fb;
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -927,7 +1027,19 @@ section {
     grid-template-columns: 1fr;
   }
   .profileStats {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: none;
+    grid-template-columns: repeat(3, 1fr);
+    min-height: 0;
+  }
+  .profileIdCard,
+  .profileBioCard {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .profileStats {
+    grid-template-columns: 1fr;
   }
 }
 
