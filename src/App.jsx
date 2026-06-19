@@ -335,15 +335,15 @@ function ModuleGlow({ children, className = '', animated = false, style }) {
   return (
     <BorderGlow
       className={`moduleGlow ${className}`}
-      edgeSensitivity={28}
+      edgeSensitivity={14}
       glowColor="195 90 72"
       backgroundColor="#0b0d13"
       borderRadius={28}
-      glowRadius={58}
-      glowIntensity={1.55}
-      coneSpread={25}
+      glowRadius={72}
+      glowIntensity={2.15}
+      coneSpread={32}
       animated={animated}
-      fillOpacity={0.42}
+      fillOpacity={0.64}
       colors={['#c084fc', '#f472b6', '#38bdf8']}
       style={style}
     >
@@ -358,7 +358,24 @@ function BackgroundMusic() {
   const [isMuted, setIsMuted] = useState(false)
   const [trackIndex, setTrackIndex] = useState(0)
   const audioRef = useRef(null)
+  const autoplayStartedRef = useRef(false)
   const track = musicTracks[trackIndex]
+  const musicVolume = 0.32
+
+  const startMusic = async () => {
+    const audio = audioRef.current
+    if (!audio || autoplayStartedRef.current) return
+
+    audio.volume = musicVolume
+    setIsOpen(true)
+
+    try {
+      await audio.play()
+      autoplayStartedRef.current = true
+    } catch {
+      autoplayStartedRef.current = false
+    }
+  }
 
   const togglePlay = async () => {
     setIsOpen(true)
@@ -400,11 +417,38 @@ function BackgroundMusic() {
 
   useEffect(() => {
     const audio = audioRef.current
+    if (!audio) return undefined
+
+    audio.volume = musicVolume
+
+    startMusic()
+    audio.addEventListener('canplaythrough', startMusic, { once: true })
+    window.addEventListener('pointerdown', startMusic, { once: true, capture: true })
+    window.addEventListener('click', startMusic, { once: true, capture: true })
+    window.addEventListener('touchstart', startMusic, { once: true, capture: true, passive: true })
+    window.addEventListener('wheel', startMusic, { once: true, capture: true, passive: true })
+    window.addEventListener('scroll', startMusic, { once: true, capture: true, passive: true })
+    window.addEventListener('keydown', startMusic, { once: true, capture: true })
+
+    return () => {
+      audio.removeEventListener('canplaythrough', startMusic)
+      window.removeEventListener('pointerdown', startMusic, { capture: true })
+      window.removeEventListener('click', startMusic, { capture: true })
+      window.removeEventListener('touchstart', startMusic, { capture: true })
+      window.removeEventListener('wheel', startMusic, { capture: true })
+      window.removeEventListener('scroll', startMusic, { capture: true })
+      window.removeEventListener('keydown', startMusic, { capture: true })
+    }
+  }, [])
+
+  useEffect(() => {
+    const audio = audioRef.current
     if (!audio) return
 
     const wasPlaying = isPlaying
     audio.pause()
     audio.load()
+    audio.volume = musicVolume
     if (wasPlaying) {
       audio.play().catch(() => setIsPlaying(false))
     }
@@ -417,7 +461,8 @@ function BackgroundMusic() {
       <audio
         ref={audioRef}
         src={track.src}
-        preload="metadata"
+        autoPlay
+        preload="auto"
         muted={isMuted}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
@@ -488,6 +533,7 @@ function App() {
         ...hobbies.map((hobby) => hobby.image),
         ...dogs.map((dog) => dog.image),
         ...bands.map((band) => band.logo),
+        ...festivals.map((festival) => festival.image),
         ...travels.map((travel) => travel.image),
       ]
 
@@ -590,27 +636,27 @@ function App() {
 
         gsap.set([title, intro].filter(Boolean), { autoAlpha: 0 })
         gsap.set(title, {
-          y: 70,
-          scaleY: 0.78,
+          y: 52,
+          scaleY: 0.84,
           clipPath: 'inset(0% 0% 100% 0%)',
           transformOrigin: 'left bottom',
         })
-        gsap.set(intro, { y: 38 })
+        gsap.set(intro, { y: 28 })
         gsap.set(cards, {
-          y: 92,
+          y: 58,
           autoAlpha: 0,
-          scale: 0.94,
-          clipPath: 'inset(18% 0% 18% 0%)',
+          scale: 0.96,
+          clipPath: 'inset(11% 0% 11% 0%)',
           transformOrigin: 'center bottom',
         })
 
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
-            start: 'top 64%',
+            start: 'top 76%',
             once: true,
           },
-          defaults: { ease: 'expo.out' },
+          defaults: { ease: 'power4.out' },
         })
 
         tl.to(title, {
@@ -618,24 +664,24 @@ function App() {
             scaleY: 1,
             autoAlpha: 1,
             clipPath: 'inset(0% 0% 0% 0%)',
-            duration: 1.15,
+            duration: 0.86,
           })
           .to(intro, {
             y: 0,
             autoAlpha: 1,
-            duration: 0.9,
-          }, '-=0.72')
+            duration: 0.7,
+          }, '-=0.54')
           .to(cards, {
             y: 0,
             scale: 1,
             autoAlpha: 1,
             clipPath: 'inset(0% 0% 0% 0%)',
-            duration: 1.15,
+            duration: 0.88,
             stagger: {
-              each: 0.1,
+              each: 0.07,
               from: 'start',
             },
-          }, '-=0.44')
+          }, '-=0.36')
       })
 
       gsap.utils.toArray('.festivalImage img, .travelCard img').forEach((img) => {
